@@ -1,14 +1,12 @@
 import java.io.*;
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class MinimumEditDistance {
     public static void main(String[] args) throws Exception {
         String word2 = null;
         String word1 = null;
-
+        Map<String, Integer> map = new HashMap<String, Integer>();
         Scanner input = new Scanner(System.in);
         System.out.print("Lütfen word giriniz: ");
 
@@ -56,10 +54,21 @@ public class MinimumEditDistance {
                     }
                 }
 
-                System.out.println(dp[len1][len2]);
+                //System.out.println(dp[len1][len2]);
+                map.put(word2, dp[len1][len2]);
                 line = reader.readLine();
             }
 
+            for(int i=0; i<5;i++) {
+                Map.Entry<String, Integer> min = null;
+                for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                    if (min == null || min.getValue() > entry.getValue()) {
+                        min = entry;
+                    }
+                }
+                System.out.println(i + ".) MED:" + min.getValue() + " word:" + min.getKey());
+                map.remove(min.getKey());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
