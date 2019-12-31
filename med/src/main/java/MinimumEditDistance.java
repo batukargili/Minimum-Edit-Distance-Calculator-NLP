@@ -8,7 +8,7 @@ public class MinimumEditDistance {
         String word1 = null;
         Map<String, Integer> map = new HashMap<String, Integer>();
         Scanner input = new Scanner(System.in);
-        System.out.print("Lütfen word giriniz: ");
+        System.out.print("Please type a word you want to calculate the MED: ");
 
         word1 = input.nextLine();
         BufferedReader reader;
